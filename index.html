@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guia de Estudo Interativo - Apresentação SENAI</title>
+    <style>
+        :root {
+            --primary: #0056b3;
+            --primary-dark: #003d80;
+            --secondary: #28a745;
+            --bg: #f4f6f9;
+            --card-bg: #ffffff;
+            --text: #333333;
+            --text-muted: #666666;
+            --border: #e0e0e0;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+        }
+        .container { max-width: 800px; width: 100%; }
+        header {
+            text-align: center;
+            margin-bottom: 25px;
+            padding: 20px;
+            background: var(--card-bg);
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+        h1 { color: var(--primary); margin: 0 0 10px 0; font-size: 1.8rem; }
+        p.subtitle { color: var(--text-muted); margin: 0; font-size: 1rem; }
+        .controls {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            justify-content: space-between;
+            align-items: center;
+            background: var(--card-bg);
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin-bottom: 25px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+        .control-group { display: flex; align-items: center; gap: 10px; }
+        label { font-weight: 600; font-size: 0.9rem; }
+        select, button {
+            padding: 8px 12px;
+            border-radius: 6px;
+            border: 1px solid var(--border);
+            font-size: 0.9rem;
+            cursor: pointer;
+        }
+        .btn-toggle {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            transition: background 0.2s;
+        }
+        .btn-toggle:hover { background-color: var(--primary-dark); }
+        .slide-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            border-left: 6px solid var(--primary);
+            transition: transform 0.2s;
+        }
+        .slide-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 12px;
+            margin-bottom: 15px;
+        }
+        .slide-title { font-size: 1.2rem; font-weight: bold; color: var(--primary-dark); margin: 0; }
+        .btn-audio {
+            background-color: var(--secondary);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            padding: 8px 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: opacity 0.2s;
+        }
+        .btn-audio:hover { opacity: 0.9; }
+        .speech-box {
+            background-color: #f8f9fa;
+            border: 1px dashed var(--primary);
+            padding: 15px;
+            border-radius: 8px;
+            font-size: 1.05rem;
+            line-height: 1.6;
+            margin-bottom: 15px;
+            position: relative;
+        }
+        .speech-box.blurred { filter: blur(5px); user-select: none; }
+        .bullets { font-size: 0.95rem; color: var(--text-muted); margin: 0; padding-left: 20px; }
+        .pronunciation-card {
+            background: #eef6ff;
+            border: 1px solid #b6d4fe;
+            border-radius: 12px;
+            padding: 20px;
+            margin-top: 30px;
+        }
+        .pronunciation-card h3 { margin-top: 0; color: var(--primary-dark); }
+        @media (max-width: 600px) {
+            body { padding: 12px; }
+            .controls { flex-direction: column; align-items: stretch; }
+            .control-group { justify-content: space-between; }
+            .slide-header { flex-direction: column; align-items: flex-start; gap: 10px; }
+            .btn-audio { width: fit-content; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <header>
+        <h1>Apresentação SENAI - Guia de Estudo</h1>
+        <p class="subtitle">Componente 3 (Slides 09 ao 12) | Treino com Áudio e Memorização</p>
+    </header>
+
+    <div class="controls">
+        <div class="control-group">
+            <label for="speedSelect">Velocidade da Fala:</label>
+            <select id="speedSelect">
+                <option value="0.8">0.8x (Devagar)</option>
+                <option value="1.0" selected>1.0x (Normal)</option>
+                <option value="1.2">1.2x (Rápido)</option>
+            </select>
+        </div>
+        <button class="btn-toggle" id="toggleBlurButton" type="button">Modo Memorização (Ocultar Roteiros)</button>
+    </div>
+
+    <div class="slide-card">
+        <div class="slide-header">
+            <h2 class="slide-title">Slide 09 - Integração Proposta</h2>
+            <button class="btn-audio" type="button" data-speak="slide09-text"><span>🔊</span> Ouvir Roteiro</button>
+        </div>
+        <div class="speech-box" id="slide09-text">"Passando para a integração com o TOTVS RM, é muito importante destacar que o sistema oficial da empresa continua sendo a fonte principal dos registros. O nosso site opera como uma camada complementar inteligente. Ele recebe os dados de materiais e saldos para gerar a análise ABC e sugerir os melhores endereços. Mas a aprovação final é sempre do gestor e os registros oficiais permanecem no TOTVS RM."</div>
+        <strong>Pontos Chave para Lembrar:</strong>
+        <ul class="bullets">
+            <li>TOTVS RM é a fonte oficial (nada substitui o banco do RM).</li>
+            <li>O site é uma camada inteligente para análise ABC e sugestão de espaço.</li>
+            <li>Validação final é humana (feita pelo gestor).</li>
+        </ul>
+    </div>
+
+    <div class="slide-card">
+        <div class="slide-header">
+            <h2 class="slide-title">Slide 10 - Leitura de Códigos</h2>
+            <button class="btn-audio" type="button" data-speak="slide10-text"><span>🔊</span> Ouvir Roteiro</button>
+        </div>
+        <div class="speech-box" id="slide10-text">"Na leitura de códigos, propomos a utilização de leitores 2D para acelerar a conferência dos itens e endereços. O fluxo é simples: o operador lê o código do material, lê a etiqueta da posição na prateleira, o sistema confere a correspondência e registra. Estimamos um investimento inicial em torno de 3.100 Reais para este piloto, cobrindo o equipamento, testes de configuração, integração e treinamento."</div>
+        <strong>Pontos Chave para Lembrar:</strong>
+        <ul class="bullets">
+            <li>Leitor 2D para conferir item + endereço.</li>
+            <li>Fluxo: Ler item → Ler posição → Conferir → Registrar.</li>
+            <li>Custo estimado do pacote piloto: R$ 3.100.</li>
+        </ul>
+    </div>
+
+    <div class="slide-card">
+        <div class="slide-header">
+            <h2 class="slide-title">Slide 11 - Recebimento</h2>
+            <button class="btn-audio" type="button" data-speak="slide11-text"><span>🔊</span> Ouvir Roteiro</button>
+        </div>
+        <div class="speech-box" id="slide11-text">"No fluxo de recebimento, mantemos total conformidade com o processo oficial. Primeiro é conferida a Ordem de Compra, valida-se o material e a quantidade, registra-se a FRS no TOTVS RM e, por fim, o nosso sistema orienta a confirmação da posição exata onde o item deve ser guardado. A leitura otimiza a conferência, mas não substitui as autorizações oficiais."</div>
+        <strong>Pontos Chave para Lembrar:</strong>
+        <ul class="bullets">
+            <li>Etapas: 1. Ordem de Compra → 2. Conferência → 3. FRS no RM → 4. Confirmar Posição.</li>
+            <li>A leitura auxilia a conferência, mas a entrada oficial de estoque fica no RM.</li>
+        </ul>
+    </div>
+
+    <div class="slide-card">
+        <div class="slide-header">
+            <h2 class="slide-title">Slide 12 - Separação</h2>
+            <button class="btn-audio" type="button" data-speak="slide12-text"><span>🔊</span> Ouvir Roteiro</button>
+        </div>
+        <div class="speech-box" id="slide12-text">"Por fim, na separação de materiais, o processo começa com a requisição aprovada. O almoxarife consulta no site a localização exata recomendada, realiza a leitura para confirmar que pegou o item certo na prateleira certa, faz a baixa oficial no TOTVS RM e entrega ao solicitante. Caso ocorra qualquer divergência, o responsável é notificado para análise."</div>
+        <strong>Pontos Chave para Lembrar:</strong>
+        <ul class="bullets">
+            <li>Etapas: Requisição Aprovada → Consultar Posição → Bipar Item/Endereço → Baixar no RM → Entregar.</li>
+            <li>Garante acuracidade e reduz tempo de busca.</li>
+        </ul>
+    </div>
+
+    <div class="pronunciation-card">
+        <h3>💡 Dica Importante de Pronúncia</h3>
+        <p>Como pronunciar <strong>TOTVS RM</strong>?</p>
+        <p style="font-size: 1.2rem; font-weight: bold; color: var(--primary);">"Tótus Ré-Eme"</p>
+        <p>Nunca digas <em>"Tótvis"</em>. Diz sempre <strong>Tótus</strong>.</p>
+    </div>
+</div>
+
+<script>
+    let isBlurred = false;
+
+    function speakText(elementId) {
+        if (!('speechSynthesis' in window)) {
+            alert('Seu navegador não oferece suporte à leitura em voz alta.');
+            return;
+        }
+        window.speechSynthesis.cancel();
+        const element = document.getElementById(elementId);
+        if (!element) return;
+
+        const utterance = new SpeechSynthesisUtterance(element.innerText);
+        utterance.lang = 'pt-BR';
+        utterance.rate = parseFloat(document.getElementById('speedSelect').value);
+        window.speechSynthesis.speak(utterance);
+    }
+
+    function toggleBlur() {
+        isBlurred = !isBlurred;
+        document.querySelectorAll('.speech-box').forEach(box => {
+            box.classList.toggle('blurred', isBlurred);
+        });
+        document.getElementById('toggleBlurButton').textContent =
+            isBlurred ? 'Mostrar Roteiros' : 'Modo Memorização (Ocultar Roteiros)';
+    }
+
+    document.querySelectorAll('[data-speak]').forEach(button => {
+        button.addEventListener('click', () => speakText(button.dataset.speak));
+    });
+    document.getElementById('toggleBlurButton').addEventListener('click', toggleBlur);
+    window.addEventListener('beforeunload', () => {
+        if ('speechSynthesis' in window) window.speechSynthesis.cancel();
+    });
+</script>
+</body>
+</html>
